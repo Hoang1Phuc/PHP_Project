@@ -2,10 +2,10 @@
 <div class="container">
     <div class="table-header">
         <h2>Danh Sách Sinh Viên</h2>
-        <a href="/BAIKIEMTRA/Sinhvien/add" class="add-btn">➕ Thêm Sinh Viên</a>
+        <a href="/BAIKIEMTRA/Sinhvien/add" class="add-btn">Thêm Sinh Viên</a>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-wrapper">
         <table class="student-table">
             <thead>
                 <tr>
@@ -24,8 +24,8 @@
                         <tr>
                             <td>
                                 <?= htmlspecialchars($sv['MaSV']) ?>
-                                <a href="/BAIKIEMTRA/SinhVien/show/<?= $sv['MaSV'] ?>" class="btn btn-info btn-sm">
-                                    Xem Chi Tiết
+                                <a href="/BAIKIEMTRA/SinhVien/show/<?= $sv['MaSV'] ?>" class="btn btn-view">
+                                    Xem
                                 </a>
                             </td>
                             <td><?= htmlspecialchars($sv['HoTen']) ?></td>
@@ -36,16 +36,20 @@
                             </td>
                             <td><?= htmlspecialchars($sv['MaNganh']) ?></td>
                             <td class="action-buttons">
-                                <a href="/BAIKIEMTRA/SinhVien/edit/<?= $sv['MaSV'] ?>" class="btn btn-warning btn-sm">Sửa</a>
+                                <a href="/BAIKIEMTRA/SinhVien/edit/<?= $sv['MaSV'] ?>" class="btn btn-edit">
+                                    Sửa
+                                </a>
                                 <a href="/BAIKIEMTRA/SinhVien/delete/<?= $sv['MaSV'] ?>" 
-                                   class="btn btn-danger btn-sm" 
-                                   onclick="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?');">Xóa</a>
+                                   class="btn btn-delete" 
+                                   onclick="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?');">
+                                    Xóa
+                                </a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else : ?>
                     <tr>
-                        <td colspan="7" class="no-data">Không có dữ liệu</td>
+                        <td colspan="7" class="no-data">Chưa có sinh viên nào</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
@@ -56,105 +60,128 @@
 
 <style>
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 0 15px;
+    max-width: 1300px;
+    margin: 30px auto;
+    padding: 0 20px;
+    background-color: #f7f9fc;
+    border-radius: 15px;
 }
 
 .table-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    padding: 20px 25px 10px;
+    border-bottom: 2px solid #dfe6e9;
 }
 
 h2 {
-    color: #333;
+    color: #1e90ff;
     margin: 0;
+    font-size: 28px;
+    font-weight: 600;
 }
 
 .add-btn {
-    background-color: #28a745;
+    background: linear-gradient(45deg, #00cec9, #00b894);
     color: white;
-    padding: 8px 15px;
+    padding: 10px 20px;
     text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .add-btn:hover {
-    background-color: #218838;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 206, 201, 0.3);
 }
 
-.table-responsive {
-    overflow-x: auto;
+.table-wrapper {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+    margin: 0 25px 25px;
 }
 
 .student-table {
     width: 100%;
     border-collapse: collapse;
-    background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.student-table th,
-.student-table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
 }
 
 .student-table th {
-    background-color: #f8f9fa;
-    color: #333;
-    font-weight: bold;
+    background: #6c5ce7;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.student-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.student-table tr {
+    transition: background-color 0.2s;
 }
 
 .student-table tr:hover {
-    background-color: #f5f5f5;
+    background-color: #f1f3f5;
 }
 
 .student-image {
-    max-width: 50px;
-    height: auto;
-    border-radius: 4px;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #a29bfe;
 }
 
 .btn {
-    padding: 5px 10px;
+    padding: 8px 15px;
     text-decoration: none;
-    border-radius: 4px;
-    margin: 0 2px;
-    display: inline-block;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.btn-info {
-    background-color: #17a2b8;
+.btn-view {
+    background-color: #0984e3;
     color: white;
 }
 
-.btn-warning {
-    background-color: #ffc107;
-    color: #212529;
+.btn-edit {
+    background-color: #fdcb6e;
+    color: #2d3436;
 }
 
-.btn-danger {
-    background-color: #dc3545;
+.btn-delete {
+    background-color: #ff7675;
     color: white;
 }
 
 .btn:hover {
-    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .action-buttons {
     display: flex;
-    justify-content: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .no-data {
-    padding: 20px;
-    color: #666;
+    padding: 30px;
+    text-align: center;
+    color: #636e72;
+    font-style: italic;
 }
 </style>

@@ -12,12 +12,12 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
-            margin: 20px;
+            margin: 0;
             padding: 0;
         }
         .container {
             width: 80%;
-            margin: auto;
+            margin: 20px auto;
             background: white;
             padding: 20px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -86,26 +86,73 @@
         .delete-btn:hover {
             background: #c82333;
         }
+
+        /* Custom Header Styles */
+        header {
+            background: linear-gradient(135deg, #6d28d9, #a855f7);
+            padding: 15px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar {
+            padding: 0 20px;
+        }
+        .navbar-brand {
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: transform 0.2s;
+        }
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            color: #f3e8ff;
+        }
+        .navbar-nav .nav-link {
+            color: white;
+            font-weight: 500;
+            padding: 10px 15px;
+            margin: 0 5px;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #f3e8ff;
+        }
+        .navbar-nav .nav-item.active .nav-link {
+            background: #ffffff;
+            color: #6d28d9;
+        }
+        .navbar-toggler {
+            border: none;
+            padding: 5px;
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php">Trang Chủ</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Sinh vien</a>
+                            <a class="nav-link" href="/">Sinh Viên</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/BAIKIEMTRA/HocPhan">Học Phần</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="cart.php">Đăng kí</a>
+                            <a class="nav-link" href="cart.php">Đăng Ký</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Auth">Đăng Nhập</a>
